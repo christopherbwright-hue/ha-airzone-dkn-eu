@@ -1,0 +1,39 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Airzone DKN Cloud EU",
+        "description": "Sign in with your DKN Cloud EU app account.",
+        "data": {
+          "username": "Email",
+          "password": "Password"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate",
+        "description": "Enter the password for {username}.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid email or password",
+      "cannot_connect": "Failed to connect to the DKN Cloud EU service",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "This account is already configured",
+      "reauth_successful": "Re-authentication was successful"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "return_temp": { "name": "Return air temperature" },
+      "exch_heat_temp_iu": { "name": "Heat exchanger temperature" },
+      "gas_pipe_temp_iu": { "name": "Gas pipe temperature" },
+      "exp_valv_ui": { "name": "Expansion valve" },
+      "stat_rssi": { "name": "Wi-Fi signal" }
+    }
+  }
+}

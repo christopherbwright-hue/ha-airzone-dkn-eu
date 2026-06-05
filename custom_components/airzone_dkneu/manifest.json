@@ -1,0 +1,12 @@
+{
+  "domain": "airzone_dkneu",
+  "name": "Airzone DKN Cloud EU",
+  "codeowners": ["@jxmatthews"],
+  "config_flow": true,
+  "documentation": "https://github.com/jxmatthews/ha-airzone-dkn-eu",
+  "integration_type": "hub",
+  "iot_class": "cloud_push",
+  "issue_tracker": "https://github.com/jxmatthews/ha-airzone-dkn-eu/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
