@@ -1,3 +1,28 @@
 __pycache__/
 *.py[cod]
 .DS_Store
+
+# === project-conventions baseline ===
+# logs
+logs/
+*.log
+
+# generated output
+build/
+dist/
+out/
+target/
+
+# secrets — NEVER commit
+.env
+.env.*
+!.env.example
+secrets/
+*credentials*.json
+*token*.json
+*.key
+*.pem
+*.p12
+
+# claude local
+.claude/settings.local.json
