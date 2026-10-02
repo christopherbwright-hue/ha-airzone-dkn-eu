@@ -32,7 +32,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: DknEuConfigEntry) -> boo
     except (DknEuError, aiohttp.ClientError, asyncio.TimeoutError) as err:
         raise ConfigEntryNotReady(str(err)) from err
 
-    coordinator = DknEuCoordinator(hass, api)
+    coordinator = DknEuCoordinator(hass, entry, api)
     try:
         await coordinator.async_setup()
     except (DknEuError, aiohttp.ClientError, asyncio.TimeoutError, OSError) as err:

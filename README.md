@@ -1,8 +1,10 @@
 # Airzone DKN Cloud EU — Home Assistant integration
 
 [![hacs](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz)
-![version](https://img.shields.io/badge/version-0.1.0-blue.svg)
+![version](https://img.shields.io/badge/version-0.1.1-blue.svg)
 ![license](https://img.shields.io/badge/license-MIT-green.svg)
+
+> **Fork note:** this is a fork of [jxmatthews/ha-airzone-dkn-eu](https://github.com/jxmatthews/ha-airzone-dkn-eu) with reliability fixes — see [CHANGELOG.md](CHANGELOG.md).
 
 A Home Assistant integration for **Daikin / Airzone air-conditioning systems that use the
 "DKN Cloud EU" app** — the ones with `DAIKIN ES.DKNWSERVER` Wi-Fi adapters whose backend is

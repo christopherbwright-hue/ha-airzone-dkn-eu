@@ -6,7 +6,6 @@ from typing import Any
 from homeassistant.components.climate import (
     ClimateEntity,
     ClimateEntityFeature,
-    HVACAction,
     HVACMode,
 )
 from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
@@ -39,12 +38,8 @@ AZ_TO_HVAC = {
     AZ_MODE_DRY: HVACMode.DRY,
 }
 HVAC_TO_AZ = {v: k for k, v in AZ_TO_HVAC.items()}
-AZ_TO_ACTION = {
-    AZ_MODE_COOL: HVACAction.COOLING,
-    AZ_MODE_HEAT: HVACAction.HEATING,
-    AZ_MODE_FAN: HVACAction.FAN,
-    AZ_MODE_DRY: HVACAction.DRYING,
-}
+# No hvac_action: the cloud exposes no compressor/fan activity, only the selected
+# mode, so reporting "heating"/"cooling" would be a guess (wrong when idle at setpoint).
 
 
 async def async_setup_entry(
@@ -89,8 +84,7 @@ class DknEuClimate(CoordinatorEntity[DknEuCoordinator], ClimateEntity):
 
     @property
     def available(self) -> bool:
-        d = self._d
-        return bool(d) and bool(d.get("isConnected"))
+        return self.coordinator.unit_available(self._mac)
 
     @property
     def temperature_unit(self) -> str:
@@ -113,12 +107,6 @@ class DknEuClimate(CoordinatorEntity[DknEuCoordinator], ClimateEntity):
         if not self._d.get("power"):
             return HVACMode.OFF
         return AZ_TO_HVAC.get(self._d.get("mode"), HVACMode.OFF)
-
-    @property
-    def hvac_action(self) -> HVACAction | None:
-        if not self._d.get("power"):
-            return HVACAction.OFF
-        return AZ_TO_ACTION.get(self._d.get("mode"))
 
     @property
     def current_temperature(self) -> float | None:

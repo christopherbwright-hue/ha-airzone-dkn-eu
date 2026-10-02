@@ -89,8 +89,7 @@ class DknEuSensor(CoordinatorEntity[DknEuCoordinator], SensorEntity):
 
     @property
     def available(self) -> bool:
-        d = self.coordinator.data.get(self._mac, {})
-        return bool(d) and bool(d.get("isConnected"))
+        return self.coordinator.unit_available(self._mac)
 
     @property
     def native_value(self) -> float | int | None:
